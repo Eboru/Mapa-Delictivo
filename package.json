@@ -28,6 +28,7 @@
     "@ionic/angular": "^5.5.2",
     "cordova-sqlite-storage": "^6.0.0",
     "rxjs": "~6.6.0",
+    "sqlite": "^4.0.22",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
