@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Mapa Delictivo
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+
+  <div class="container">
+    <form novalidate [formGroup]="formsGroup" (ngSubmit)="login()">
+
+      <ion-card>
+        <img src="https://img.icons8.com/cotton/2x/worldwide-location--v2.png" />
+        <ion-card-header>
+          <ion-card-title>Mapa Delictivo</ion-card-title>
+          <ion-card-subtitle>PROTECCIÓN ・ SEGURIDAD ・ JUSTICIA</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          Mapa de la inseguridad e incidentes criminales en tu localidad con latitud, longitud
+        </ion-card-content>
+      </ion-card>
+
+      <h2>Acceder</h2><br/>
+
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="text" formControlName="mail"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="pass"></ion-input>
+        </ion-item>
+      </ion-list>
+      <p></p>
+      <div class="col">
+        <ion-button type="submit" [disabled]="!formsGroup.valid">Iniciar Sesión</ion-button>
+      </div>
+      <p></p>
+    </form>
+  </div>
+
+
+  <ion-button fill="clear" (click)="register()">Registrarse</ion-button>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header [translucent]="true" ion-header class="ion-text-center">
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      Mi perfil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 3</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card color="light">
+  <div class="img-wrapper">
+    <img *ngIf="this.photo.getPhoto() != undefined" src={{this.photo.getPhoto().webviewPath}}>
+    <ion-button color="light">
+      <ion-icon slot="icon-only" name="camera-outline" color="medium">
+      </ion-icon>
+    </ion-button>
+  </div>
+  <ion-card-content class="ion-text-center">
+    <h2>{{this.email}}</h2>
+    <ion-text color="medium">
+      <div style="display: flex;" class="ion-justify-content-center">
+        <ion-icon name="location-outline" color="medium">
+        </ion-icon>
+        <p>Lat : {{this.geo.lat}} Lng: {{this.geo.lng}} </p>
+      </div>
+    </ion-text>
+  </ion-card-content>
+  </ion-card>
+
+</ion-content>

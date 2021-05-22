@@ -1,0 +1,19 @@
+<ion-header [translucent]="true" ion-header class = "ion-text-center">
+  <ion-toolbar color = "danger">
+    <ion-title>
+      Operaciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center" [fullscreen]="true">
+  <ion-card>
+    <ion-buttons class="formHeader">
+      <ion-button class="boton_personalizado" size="large" strong (click)="mostrarModal()">Denunciar</ion-button>
+      <ion-button class="boton_personalizado" size="large" strong>
+        <a href="tel:911">EMERGENCIA</a>
+      </ion-button>
+    </ion-buttons>
+  </ion-card>
+  <app-map></app-map>
+</ion-content>

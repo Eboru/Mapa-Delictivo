@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Registro
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="ion-padding ion-text-center">
+  <p>¡Únete para combatir el crimen!</p>
+  <form novalidate [formGroup]="formsGroup" (ngSubmit)="register()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" formControlName="mail"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" formControlName="pass"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Foto</ion-label>
+        <ion-input type="button" (click)="photo()"></ion-input>
+        <ion-img *ngIf='this.captured != undefined' [src]='this.captured.webPath'></ion-img>
+      </ion-item>
+    </ion-list>
+    <p></p>
+    <div class="col">
+      <ion-button type="submit" [disabled]="!formsGroup.valid">Enviar</ion-button>
+    </div>
+    <p></p>
+
+    <p>¡Gracias por confiar en nosotros!</p>
+  </form>
+</ion-content>
