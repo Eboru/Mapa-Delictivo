@@ -15,6 +15,7 @@
 
   <ion-card color="light">
   <div class="img-wrapper">
+     <!-- En el caso de que la foto no esté vacia, muestra la foto que ingresó el usuario dado -->
     <img *ngIf="this.photo.getPhoto() != undefined" src={{this.photo.getPhoto().webviewPath}}>
     <ion-button color="light">
       <ion-icon slot="icon-only" name="camera-outline" color="medium">
@@ -22,11 +23,14 @@
     </ion-button>
   </div>
   <ion-card-content class="ion-text-center">
+    <!-- Se muestran tanto el email del usuario -->
     <h2>{{this.email}}</h2>
     <ion-text color="medium">
       <div style="display: flex;" class="ion-justify-content-center">
         <ion-icon name="location-outline" color="medium">
         </ion-icon>
+
+        <!-- Se muestra la latitd y longitud del usuario  -->
         <p>Lat : {{this.geo.lat}} Lng: {{this.geo.lng}} </p>
       </div>
     </ion-text>

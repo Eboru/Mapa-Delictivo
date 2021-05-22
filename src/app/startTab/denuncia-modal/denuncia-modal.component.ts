@@ -21,6 +21,7 @@ export class DenunciaModalComponent implements OnInit {
 
   ngOnInit() {}
 
+//Publica la denuncia, en caso de no haber coordenadas el mapa se posiciona en (0, 0)
   async postEvent()
   {
 
@@ -41,7 +42,7 @@ export class DenunciaModalComponent implements OnInit {
     },
     async error => {
       console.log(error);
-      this.showToast("Un error ha ocurrio");
+      this.showToast("Un error ha ocurrido");
       this.modalController.dismiss();
     });
   }

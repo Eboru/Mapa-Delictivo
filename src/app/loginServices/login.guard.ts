@@ -17,7 +17,7 @@ import { LoginService } from '../loginServices/login.service';
 })
 export class LoginGuard implements CanLoad {
   constructor(private loginService: LoginService, private router: Router) {}
-
+// si el usuario esta loggeado, avanzaa la siguiente pagina
   canLoad(
     route: Route,
     segments: UrlSegment[]

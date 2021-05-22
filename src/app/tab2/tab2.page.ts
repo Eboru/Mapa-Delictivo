@@ -10,6 +10,7 @@ export class Tab2Page {
 
   constructor() {}
 
+  //Muestra la informacion en pantalla de todos los miembros del equipo y el link de una nube con nuestras fotos
   equipo: Team[] = [
     {id: 1913690, name:"Aldo Iván Garza González", img: "https://i.ibb.co/qDJkQsB/186008087-1386602471719967-5514765579628117397-n.jpg"},
     {id: 1844441, name:"Jesús Alexandro Hernández Rivera", img:"https://i.ibb.co/vqhHdxd/Whats-App-Image-2021-05-21-at-7-07-57-PM.jpg"},
@@ -20,6 +21,6 @@ export class Tab2Page {
     {id: 1903481, name:"Ernesto Guadalupe Rincón Ortiz", img:"https://i.ibb.co/34K40Jr/186528682-294677255664429-1900751733265871202-n.jpg"}
 
   ]
-        
+
 
 }

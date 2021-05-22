@@ -1,3 +1,4 @@
+/// Se establece tanto el link de la base de datos como la llave del firebase
 export const environment = {
   production: true,
   firebaseUrl: "https://eltrocrime-default-rtdb.firebaseio.com/",

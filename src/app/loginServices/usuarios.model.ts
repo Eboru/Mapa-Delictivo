@@ -1,3 +1,4 @@
+// Se exporta la clase Usuario que contiene los datos de id , email, y token
 export class Usuario{
   constructor(
     public id: string,

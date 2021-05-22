@@ -15,12 +15,17 @@ import { CameraPhoto } from '@capacitor/core';
 })
 
 export class RegisterComponent implements OnInit {
+  //Un forms que sera utilizado para leer los datos
   formsGroup : FormGroup;
+  //Se hara uso de una camara para el registro
   captured : CameraPhoto;
+  //Caracteres validos para el registro
   readonly regexMail = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
 
+  //Controladores que se usaron
   constructor(private router : Router, private login : LoginService, private loadingCtrl : LoadingController,
     private alertCtrl: AlertController, private camera : CameraService) {
+   //Validaciones para el foro
    this.formsGroup = new FormGroup({
       mail: new FormControl('', [Validators.required, Validators.pattern(this.regexMail), Validators.maxLength(100)]),
       pass: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
@@ -30,14 +35,17 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
+  //Metodo para la toma de la foto con el dispositivo
    async photo()
    {
       this.captured = await this.camera.takePhoto()
       this.formsGroup.controls['pic'].setValue(true);
    }
 
+//Metodo para el registro del form
   register()
   {
+    //Validacion de los datos del registro
     this.loadingCtrl.create(
       {
         keyboardClose: true,
@@ -56,7 +64,7 @@ export class RegisterComponent implements OnInit {
         console.log(this.captured);
         this.camera.savePhoto(this.captured);
       }, errorResponse=>
-      {
+      { //Posibles errores
         loadingEl.dismiss();
         const error = errorResponse.error.error.message;
         let mensaje = 'Acceso incorrecto!';
@@ -76,7 +84,7 @@ export class RegisterComponent implements OnInit {
       });
     });
   }
-
+  //Se manda una alerta
   showAlert(titulo: string, mensaje: string)
   {
     this.alertCtrl.create({

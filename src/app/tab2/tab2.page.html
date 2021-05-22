@@ -16,10 +16,13 @@
   <ion-list>
     <ion-item *ngFor="let item of equipo">
       <ion-avatar slot="start">
+        <!-- Muestra las fotos de los integrantes del equipo-->
         <img src={{item.img}} alt="X">
       </ion-avatar>
       <ion-label>
+<!-- Muestra el nombre de los integrantes del equipo-->
         <h3>{{item.name}}</h3>
+        <!-- Muestra la matricula de los integrantes del equipo-->
         <p>{{item.id}}</p>
       </ion-label>
     </ion-item>

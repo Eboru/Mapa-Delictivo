@@ -29,6 +29,7 @@ export class LoginService {
   connection : Promise<SQLiteObject>;
 
   constructor(private http: HttpClient, private sqlite : SQLite) {
+    // Se crea la base de datos
     try {
       if(!this.useStorage)
       {
@@ -47,9 +48,10 @@ export class LoginService {
 
   }
 
+//obtiene el email de la base de datos
   async getEmail()
   {
-    console.log("GET EMIAL");
+    console.log("GET EMAIL");
 
     try {
       if(!this.useStorage)
@@ -70,6 +72,7 @@ export class LoginService {
     return user.email;
   }
 
+  //Comprueba si estas loggeado, y si lo estas te logea automaticamente al recargar pagina
   async isLogged() {
     console.log("IS LOGGED");
     try {
@@ -104,7 +107,7 @@ export class LoginService {
     }
     return false;
   }
-
+//Comprueba si el usuario esta loggeado
   async setUsuarioLoggeado(esta: boolean, response: LoginResponseData) {
     console.log("SET USUARIO LOGGEADO");
     console.log("EMAIL " + response.email);
@@ -132,6 +135,7 @@ export class LoginService {
     return;
   }
 
+// Crea el usuario y mandala informacion a la base de datos
   signup(email: string, password: string) {
     return this.http.post<LoginResponseData>(
       `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseKey}`,
@@ -139,6 +143,7 @@ export class LoginService {
     );
   }
 
+// Permite iniciar sesion si existe el usuario y contraseña
   login(email: string, password: string) {
     return this.http.post<LoginResponseData>(
       `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseKey}`,

@@ -35,6 +35,7 @@ export class MapComponent implements OnInit {
     }
   }
 
+  //Crea el mapa con coordenadasen (0, 0)
   async initMap() : Promise<void> {
 
     this.map = new google.maps.Map(
@@ -49,6 +50,7 @@ export class MapComponent implements OnInit {
 
   }
 
+//muestra el mapa en base a la especificacion del css
   async mostrarModal()
   {
     const modal = await this.modalController.create({
@@ -58,12 +60,14 @@ export class MapComponent implements OnInit {
     return await modal.present();
   }
 
+//le pasa las coordenadas al mapa
   panTo(lat : number, long : number)
   {
     console.log("Panned to : " + lat + "," + long)
     this.map.panTo(new google.maps.LatLng(lat, long));
   }
 
+  //actualiza la heatmap a tiempo real
   updateHeatmap(heatmap : google.maps.visualization.HeatmapLayer)
   {
     if(heatmap != null)

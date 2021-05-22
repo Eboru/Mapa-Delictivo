@@ -12,7 +12,7 @@ export class EventServiceService {
   private _event = new BehaviorSubject<Event[]>([]);
 
   constructor(private client : HttpClient) { }
-
+  // Se obtienen los datos del firebase
   fetchEvents()
   {
     const url = "https://eltrocrime-default-rtdb.firebaseio.com/";
@@ -35,7 +35,7 @@ export class EventServiceService {
 
   }
 
-
+  // Enviar los Datos al firebase
   postEvent(event : Event)
   {
     const url = "https://eltrocrime-default-rtdb.firebaseio.com/";

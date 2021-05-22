@@ -6,11 +6,13 @@ import { map } from 'rxjs/operators';
 import { ThrowStmt } from '@angular/compiler';
 const { Camera, Filesystem, Storage } = Plugins;
 
+// Para mantener nuestros metadatos fotográficos
 export interface Photo {
   filepath: string;
   webviewPath: string;
 }
 
+// Contendrá una referencia a cada foto capturada con la cámara
 export class PhotoData {
   constructor(
   public email: string,
@@ -27,6 +29,8 @@ export class CameraService {
 
   constructor(private client : HttpClient, private login : LoginService) { }
 
+  //  Añade la nueva foto capturada al principio del arreglo de fotos
+
   public async takePhoto() {
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
@@ -37,6 +41,7 @@ export class CameraService {
   }
 
   private async readAsBase64(cameraPhoto: CameraPhoto) {
+    // Obtener la foto y convertirla al formato base 64
     const response = await fetch(cameraPhoto.webPath!);
     const blob = await response.blob();
 
@@ -53,27 +58,30 @@ export class CameraService {
   });
 
 
+  // Carga la Foto
   public async loadPhoto()
   {
     const email = await this.login.getEmail();
     const url = 'https://eltrocrime-default-rtdb.firebaseio.com/fotos.json?orderBy="email"&equalTo="'+ email+ '"';
     const h = this.client.get<{[key: string]: PhotoData}>(url).subscribe(data => {
-      for(const key in data)
+      for (const key in data)
         this.photo = {filepath: "", webviewPath: data[key].pic};
     });
   }
 
+  // Obtiene la foto
   public getPhoto()
   {
     return this.photo;
   }
 
+
   public async savePhoto(photo : CameraPhoto)
   {
-      // Convert photo to base64 format, required by Filesystem API to save
+      // Se convierte la foto al formato base64, requerido por la API del sistema de archivos para ser guardada
       const base64Data = await this.readAsBase64(photo);
 
-      // Write the file to the data directory
+      // Se escribe el archivo en el directorio de datos
       const fileName = new Date().getTime() + '.jpeg';
       const savedFile = await Filesystem.writeFile({
         path: fileName,
@@ -81,8 +89,7 @@ export class CameraService {
         directory: FilesystemDirectory.Data
       });
 
-    // Use webPath to display the new image instead of base64 since it's
-      // already loaded into memory
+    // Se utiliza webPath para mostrar la nueva imagen en lugar de base64, ya que está cargada en memoria
       this.photo = {  filepath: fileName,  webviewPath: photo.webPath};
       const url = "https://eltrocrime-default-rtdb.firebaseio.com/";
       const email = await this.login.getEmail();

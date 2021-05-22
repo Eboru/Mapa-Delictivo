@@ -50,6 +50,7 @@ export class Tab1Page {
     }
 
 
+    // Función asíncrona que nos ayuda a controlar el tiempo de espera al conseguirse la ubicación
     async waitForPosition()
     {
        this.loading = await this.loadingController.create({
@@ -74,6 +75,8 @@ export class Tab1Page {
     }
   }
 
+
+  // Función en donde se actualiza el mapa de calor al conseguir la posición dada
   updateHeatMap() {
     if (this.eventsSub) {
       this.eventsSub.unsubscribe();
@@ -97,6 +100,7 @@ export class Tab1Page {
     });
   }
 
+  // Función que nos ayuda a mostrar la ubicación de nuestro evento en el mapa
   async mostrarModal() {
     const modal = await this.modalController.create({
       component: DenunciaModalComponent,
