@@ -150,4 +150,18 @@ export class LoginService {
       { email: email, password: password, returnSecureToken: true }
     );
   }
+
+  async logout(){
+    this.useStorage=true;
+    try {
+      if(!this.useStorage)
+    {
+    await (await this.connection).executeSql("DELETE FROM SESIONES", []);
+    console.log("ELIMINADO SESIONES");
+    return;
+    }
+    } catch (error) {
+    }
+    Plugins.Storage.remove({key: 'user'});
+  }
 }

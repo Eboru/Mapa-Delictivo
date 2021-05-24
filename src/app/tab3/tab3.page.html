@@ -1,5 +1,10 @@
 <ion-header [translucent]="true" ion-header class="ion-text-center">
   <ion-toolbar color="tertiary">
+
+    <!--<ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab3"></ion-back-button>
+    </ion-buttons>-->
+
     <ion-title>
       Mi perfil
     </ion-title>
@@ -36,5 +41,13 @@
     </ion-text>
   </ion-card-content>
   </ion-card>
+  <div>
+    <ion-list>
+      <ion-item (click)="onLogOut()">
+        <ion-label>Cerrar Sesion</ion-label>
+        <ion-icon name="exit-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>
