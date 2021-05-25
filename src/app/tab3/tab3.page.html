@@ -23,8 +23,6 @@
      <!-- En el caso de que la foto no esté vacia, muestra la foto que ingresó el usuario dado -->
     <img *ngIf="this.photo.getPhoto() != undefined" src={{this.photo.getPhoto().webviewPath}}>
     <ion-button color="light">
-      <ion-icon slot="icon-only" name="camera-outline" color="medium">
-      </ion-icon>
     </ion-button>
   </div>
   <ion-card-content class="ion-text-center">
@@ -41,13 +39,8 @@
     </ion-text>
   </ion-card-content>
   </ion-card>
-  <div>
-    <ion-list>
-      <ion-item (click)="onLogOut()">
-        <ion-label>Cerrar Sesion</ion-label>
-        <ion-icon name="exit-outline" slot="end"></ion-icon>
-      </ion-item>
-    </ion-list>
-  </div>
-
+  <ion-button (click)="onLogOut()" expand="full" shape="round">
+    <ion-label>Cerrar Sesion</ion-label>
+    <ion-icon name="exit-outline" slot="end"></ion-icon>
+  </ion-button>
 </ion-content>

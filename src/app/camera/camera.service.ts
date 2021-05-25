@@ -25,7 +25,7 @@ export class PhotoData {
 
 export class CameraService {
 
-  public photo : Photo;
+  public photo : Photo; //La foto como base64
 
   constructor(private client : HttpClient, private login : LoginService) { }
 
@@ -58,7 +58,7 @@ export class CameraService {
   });
 
 
-  // Carga la Foto
+  // Carga la Foto de firebase
   public async loadPhoto()
   {
     const email = await this.login.getEmail();
@@ -69,7 +69,7 @@ export class CameraService {
     });
   }
 
-  // Obtiene la foto
+  // Obtiene la foto previamente cargada
   public getPhoto()
   {
     return this.photo;
@@ -95,6 +95,7 @@ export class CameraService {
       const email = await this.login.getEmail();
       const data = new PhotoData(email, base64Data);
       console.log(data);
+      //Se guarda la foto
       console.log(this.client.post<PhotoData>(url+"fotos.json", data).subscribe());
 
 

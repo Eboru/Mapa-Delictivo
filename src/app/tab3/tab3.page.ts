@@ -18,23 +18,17 @@ export class Tab3Page implements OnInit {
   email = "";
 
   constructor(public photo: CameraService, public login : LoginService, public geo :GeoService, public router: Router) {
-    //Se carga y guarda la foto en nuestra instancia photo
+    //Se carga la foto
     this.photo.loadPhoto();
-    //Se obtiene el email para poder cargar la foto
+    //Se obtiene el email para poder presentarlo
     this.login.getEmail().then(mail => {this.email = mail});
   }
   ngOnInit(): void {}
 
   onLogOut(){
-    
+
     this.login.logout();
     this.router.navigateByUrl('/login');
-
-    /*Ultimo recurso
-    const alert = await this.loadingController.create({
-      message: 'Cerrando Sesion...',
-    });
-    alert.present().then(data =>  window.location.reload()); */
   }
 
 }

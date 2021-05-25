@@ -7,6 +7,7 @@ export class Usuario{
     private tokenExpiration: Date
   ){}
 
+  //Regresa el token
   get Token()
   {
     if(!this.tokenExpiration || this.tokenExpiration <= new Date())

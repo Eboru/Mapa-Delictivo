@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
 
   async login()
   {
+    //Crea el loading
     this.loadingCtrl.create(
       {
         keyboardClose: true,
@@ -49,14 +50,19 @@ export class LoginComponent implements OnInit {
       loadingEl.present();
       let authObs: Observable<LoginResponseData>;
       authObs = this.loginService.login(this.formsGroup.get('mail').value, this.formsGroup.get('pass').value);
+      //Obtiene el observable del login
 
+      //Se suscribe
       authObs.subscribe(async response => {
         console.log(response);
         loadingEl.dismiss();
+        //Setea el usuario
         await this.loginService.setUsuarioLoggeado(true, response);
+        //Se va al mapa
         this.router.navigateByUrl("/service/tabs/map");
       }, errorResponse=>
       {
+        //Manejo de errores
         loadingEl.dismiss();
         const error = errorResponse.error.error.message;
         let mensaje = 'Acceso incorrecto!';

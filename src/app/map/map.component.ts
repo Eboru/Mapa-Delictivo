@@ -25,6 +25,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     console.log("on init");
+    //Settea el elemento del mapa
     try {
       if(document.getElementById('map').innerHTML == "")
       {
@@ -50,7 +51,7 @@ export class MapComponent implements OnInit {
 
   }
 
-//muestra el mapa en base a la especificacion del css
+//No se usa
   async mostrarModal()
   {
     const modal = await this.modalController.create({
@@ -60,7 +61,7 @@ export class MapComponent implements OnInit {
     return await modal.present();
   }
 
-//le pasa las coordenadas al mapa
+//hace un paneo a las corrdenadas coordenadas al mapa
   panTo(lat : number, long : number)
   {
     console.log("Panned to : " + lat + "," + long)

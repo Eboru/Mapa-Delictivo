@@ -7,6 +7,7 @@ import { ModalController } from '@ionic/angular';
   templateUrl: './content-modal.component.html',
   styleUrls: ['./content-modal.component.scss'],
 })
+//No se usa
 export class ContentModalComponent implements OnInit {
 
   constructor(private modalController : ModalController) { }

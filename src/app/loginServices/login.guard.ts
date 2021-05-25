@@ -27,6 +27,7 @@ export class LoginGuard implements CanLoad {
     | boolean
     | UrlTree {
 
+      //Si no está logegeado no carga
       return this.loginService.isLogged().then(result => {
         console.log("ACTIVADO " + result);
         if(!result)
